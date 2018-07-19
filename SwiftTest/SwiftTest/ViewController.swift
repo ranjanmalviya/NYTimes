@@ -30,28 +30,52 @@ class NyViewCell: UITableViewCell {
         self.subLabel.text = newsObject.subHeadline
         self.authorLabel.text = newsObject.author
         self.dateLabel.text = newsObject.date
-        self.roundRect.layer.cornerRadius = self.roundRect.frame.height/2.0
-        
+        self.roundRect.layer.cornerRadius =
+        self.roundRect.frame.height/2.0
         self.roundRect.backgroundColor = UIColor.lightGray
 
     }
     
 }
 
+
+
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     @IBOutlet weak var listView: UITableView!
     var newsCollection = [NewsModal]()
-    
+    fileprivate lazy var activityIndicatorView: UIActivityIndicatorView = {
+        let activityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+        activityIndicatorView.hidesWhenStopped = true
+        
+        // Set Center
+        var center = self.view.center
+        if let navigationBarFrame = self.navigationController?.navigationBar.frame {
+            center.y -= (navigationBarFrame.origin.y + navigationBarFrame.size.height)
+        }
+        activityIndicatorView.center = center
+        
+        self.view.addSubview(activityIndicatorView)
+        return activityIndicatorView
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-       // return
         // Do any additional setup after loading the view, typically from a nib.
+        activityIndicatorView.startAnimating()
         URLSession.shared.dataTask(with: NSURL(string: url)! as URL) { data, response, error in
             // Handle result
-            print(response!)
+            DispatchQueue.main.async() {
+                // stop animator UI update code
+                self.activityIndicatorView.stopAnimating()
+            }
+            
+            guard let resp = response else {
+                //show("response does not come properly")
+                return
+            }
+            print(resp)
             do {
                 let json = try JSONSerialization.jsonObject(with: data!) as! Dictionary<String, AnyObject>
                 let results = json["results"] as! [AnyObject]
@@ -67,7 +91,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                     
                 }
                 DispatchQueue.main.async() {
-                    // your UI update code
+                    // update List view data code
                     self.listView.reloadData()
                 }
                 
