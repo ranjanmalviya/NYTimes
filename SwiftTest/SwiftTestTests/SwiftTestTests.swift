@@ -16,17 +16,15 @@ class SwiftTestTests: XCTestCase {
         // Put setup code here. This method is called before the invocation of each test method in the class.
     }
     
-    func test_title_in_Cell() {
+    func test_title_in_news() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let login = storyboard.instantiateInitialViewController() as! ViewController
-        login.newsCollection.append(NewsModal.init(mainHeadline: "1", subHeadline: "2", author: "3", date: "4"))
-        
-        login.listView.reloadData()
-        let cell = login.listView.cellForRow(at:IndexPath(row: 0, section: 0) ) as! NyViewCell
-        XCTAssertEqual("1", cell.mainLabel!.text!)
-        XCTAssertEqual("2", cell.subLabel!.text!)
-        XCTAssertEqual("3", cell.authorLabel!.text!)
-        XCTAssertEqual("4", cell.dateLabel!.text!)
+        let viewC = storyboard.instantiateInitialViewController() as! ViewController
+        viewC.newsCollection.append(NewsModal.init(mainHeadline: "1", subHeadline: "2", author: "3", date: "4"))
+        let newsX = viewC.newsCollection.first
+        XCTAssertEqual("1", newsX?.mainHeadline)
+        XCTAssertEqual("2", newsX?.subHeadline)
+        XCTAssertEqual("3", newsX?.author)
+        XCTAssertEqual("4", newsX?.date)
     }
     
     override func tearDown() {
