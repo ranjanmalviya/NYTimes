@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BB1FCBAE2126CA5600CA432E /* nytimes.json in Resources */ = {isa = PBXBuildFile; fileRef = BB1FCBAD2126CA3200CA432E /* nytimes.json */; };
+		BB1FCBB02127D7BE00CA432E /* NysessionMockObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1FCBAF2127D7BD00CA432E /* NysessionMockObject.swift */; };
+		BB1FCBB62127EF9C00CA432E /* DHURLSessionMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1FCBB12127E14E00CA432E /* DHURLSessionMock.swift */; };
+		BB1FCBB82127EFB800CA432E /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB1FCBB72127EFB700CA432E /* Default-568h@2x.png */; };
 		BB9EF0921FF0912C0078B005 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9EF0911FF0912C0078B005 /* AppDelegate.swift */; };
 		BB9EF0941FF0912C0078B005 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9EF0931FF0912C0078B005 /* ViewController.swift */; };
 		BB9EF0971FF0912C0078B005 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB9EF0951FF0912C0078B005 /* Main.storyboard */; };
@@ -37,6 +41,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BB1FCBAD2126CA3200CA432E /* nytimes.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = nytimes.json; sourceTree = "<group>"; };
+		BB1FCBAF2127D7BD00CA432E /* NysessionMockObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NysessionMockObject.swift; sourceTree = "<group>"; };
+		BB1FCBB12127E14E00CA432E /* DHURLSessionMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DHURLSessionMock.swift; sourceTree = "<group>"; };
+		BB1FCBB72127EFB700CA432E /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		BB9EF08E1FF0912C0078B005 /* SwiftTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB9EF0911FF0912C0078B005 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BB9EF0931FF0912C0078B005 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -80,9 +88,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BB1FCBB42127EED300CA432E /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		BB9EF0851FF0912B0078B005 = {
 			isa = PBXGroup;
 			children = (
+				BB1FCBB72127EFB700CA432E /* Default-568h@2x.png */,
 				BB9EF0901FF0912C0078B005 /* SwiftTest */,
 				BB9EF0A81FF0912D0078B005 /* SwiftTestTests */,
 				BB9EF0B31FF0912D0078B005 /* SwiftTestUITests */,
@@ -103,13 +119,15 @@
 		BB9EF0901FF0912C0078B005 /* SwiftTest */ = {
 			isa = PBXGroup;
 			children = (
+				BB1FCBB42127EED300CA432E /* Supporting Files */,
 				BB9EF0911FF0912C0078B005 /* AppDelegate.swift */,
 				BB9EF0951FF0912C0078B005 /* Main.storyboard */,
+				BB9EF0A01FF0912C0078B005 /* Info.plist */,
 				BB9EF0931FF0912C0078B005 /* ViewController.swift */,
 				BB9EF09B1FF0912C0078B005 /* Assets.xcassets */,
 				BB9EF09D1FF0912C0078B005 /* LaunchScreen.storyboard */,
-				BB9EF0A01FF0912C0078B005 /* Info.plist */,
 				BB9EF0981FF0912C0078B005 /* SwiftTest.xcdatamodeld */,
+				BB1FCBB12127E14E00CA432E /* DHURLSessionMock.swift */,
 				BBB445E420FDBC3000FA160F /* NewsModal.swift */,
 				BBB445E820FF301D00FA160F /* DetailNewsViewController.swift */,
 			);
@@ -119,6 +137,8 @@
 		BB9EF0A81FF0912D0078B005 /* SwiftTestTests */ = {
 			isa = PBXGroup;
 			children = (
+				BB1FCBAF2127D7BD00CA432E /* NysessionMockObject.swift */,
+				BB1FCBAD2126CA3200CA432E /* nytimes.json */,
 				BB9EF0A91FF0912D0078B005 /* SwiftTestTests.swift */,
 				BB9EF0AB1FF0912D0078B005 /* Info.plist */,
 			);
@@ -242,6 +262,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BB9EF09F1FF0912C0078B005 /* LaunchScreen.storyboard in Resources */,
+				BB1FCBB82127EFB800CA432E /* Default-568h@2x.png in Resources */,
 				BB9EF09C1FF0912C0078B005 /* Assets.xcassets in Resources */,
 				BB9EF0971FF0912C0078B005 /* Main.storyboard in Resources */,
 			);
@@ -251,6 +272,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BB1FCBAE2126CA5600CA432E /* nytimes.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -270,6 +292,7 @@
 			files = (
 				BBB445E520FDBC3700FA160F /* NewsModal.swift in Sources */,
 				BB9EF09A1FF0912C0078B005 /* SwiftTest.xcdatamodeld in Sources */,
+				BB1FCBB62127EF9C00CA432E /* DHURLSessionMock.swift in Sources */,
 				BBB445E920FF301D00FA160F /* DetailNewsViewController.swift in Sources */,
 				BB9EF0941FF0912C0078B005 /* ViewController.swift in Sources */,
 				BB9EF0921FF0912C0078B005 /* AppDelegate.swift in Sources */,
@@ -280,6 +303,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BB1FCBB02127D7BE00CA432E /* NysessionMockObject.swift in Sources */,
 				BB9EF0AA1FF0912D0078B005 /* SwiftTestTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

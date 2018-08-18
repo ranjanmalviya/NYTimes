@@ -9,7 +9,7 @@
 import UIKit
 
 let productKey = "ABC"
-let url = "http://api.nytimes.com/svc/mostpopular/v2/mostviewed/all-sections/7.json?api-key=d84bea1f0a9d42378053ccd767456b83"
+let urlString = "http://api.nytimes.com/svc/mostpopular/v2/mostviewed/all-sections/7.json?api-key=d84bea1f0a9d42378053ccd767456b83"
 
 //key in Json
 let mainHeadingKey = "title"
@@ -44,6 +44,11 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 
     @IBOutlet weak var listView: UITableView!
     var newsCollection = [NewsModal]()
+    
+    // create and initialize URLSession with a default session configuration
+    var defaultSession: DHURLSession = URLSession(configuration: URLSessionConfiguration.default)
+    var dataTask: URLSessionDataTask?
+    
     fileprivate lazy var activityIndicatorView: UIActivityIndicatorView = {
         let activityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: .gray)
         activityIndicatorView.hidesWhenStopped = true
@@ -62,49 +67,69 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        let url = URL(string: urlString)
+        // from the session you created, you initialize a URLSessionDataTask to handle the HTTP GET request.
+        // the constructor of URLSessionDataTask takes in the URL that you constructed along with a completion handler to be called when the data task completed
         // Do any additional setup after loading the view, typically from a nib.
         activityIndicatorView.startAnimating()
-        URLSession.shared.dataTask(with: NSURL(string: url)! as URL) { data, response, error in
-            // Handle result
-            DispatchQueue.main.async() {
+        dataTask = defaultSession.dataTask(with: url!) {
+            data, response, error in
+            // invoke the UI update in the main thread and hide the activity indicator to show that the task is completed
+            DispatchQueue.main.async {
                 // stop animator UI update code
                 self.activityIndicatorView.stopAnimating()
             }
-            
-            guard let resp = response else {
-                //show("response does not come properly")
-                return
-            }
-            print(resp)
-            do {
-                let json = try JSONSerialization.jsonObject(with: data!) as! Dictionary<String, AnyObject>
-                let results = json["results"] as! [AnyObject]
-                var i  = 1
-               // while( i != 10){
-                for dic in results {
-
-                    let newDic = dic as! Dictionary<String, AnyObject>
-                    let news = NewsModal.init(mainHeadline: newDic[mainHeadingKey] as? String,subHeadline: newDic[subHeadingKey] as? String, author: newDic[authorKey] as? String, date: newDic[publishDateKey] as? String)
-
-                    self.newsCollection.append(news)
-                    i = i + 1;
-                    
+            // if HTTP request is successful you call updateSearchResults(_:) which parses the response NSData into Tracks and updates the table view
+            if let error = error {
+                print(error.localizedDescription)
+            } else if let httpResponse = response as? HTTPURLResponse {
+                if httpResponse.statusCode == 200 {
+                    self.updateNewsData(data)
                 }
-                DispatchQueue.main.async() {
-                    // update List view data code
-                    self.listView.reloadData()
-                }
-                
-
-                
-                print(json)
-            } catch {
-                print("error")
             }
-
-            }.resume()
+        }
+        
+        // all tasks start in a suspended state by default, calling resume() starts the data task
+        dataTask?.resume()
 
         
+    }
+    
+    
+    func updateNewsData(_ data: Data?)
+    {
+        do {
+            if let data = data, let response = try JSONSerialization.jsonObject(with: data, options:JSONSerialization.ReadingOptions(rawValue:0)) as? [String: AnyObject] {
+                
+                // Get the results array
+                if let array: AnyObject = response["results"] {
+                     for dic in array as! [AnyObject] {
+                    //for dic in array {
+                        
+                        let newDic = dic as! Dictionary<String, AnyObject>
+                        let news = NewsModal.init(mainHeadline: newDic[mainHeadingKey] as? String,subHeadline: newDic[subHeadingKey] as? String, author: newDic[authorKey] as? String, date: newDic[publishDateKey] as? String)
+                        
+                        self.newsCollection.append(news)
+                        
+                        
+                    //}
+                    }
+                    
+                } else {
+                    print("Results key not found in dictionary")
+                }
+            } else {
+                print("JSON Error")
+            }
+        }catch let error as NSError {
+            print("Error parsing results: \(error.localizedDescription)")
+        }
+        
+        
+        DispatchQueue.main.async {
+            self.listView.reloadData()
+            self.listView.setContentOffset(CGPoint.zero, animated: false)
+        }
     }
 
     override func didReceiveMemoryWarning() {

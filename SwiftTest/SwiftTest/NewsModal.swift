@@ -10,13 +10,15 @@ import Foundation
 
 let DEFAULTVALUE = "NA"
 
+// Extension to delete prefix from string
 extension String {
     func deletingPrefix(_ prefix: String) -> String {
         guard self.hasPrefix(prefix) else { return self }
         return String(self.dropFirst(prefix.count))
     }
 }
-
+// This  modal object contains information of news
+// Every object is one unique news
 class NewsModal {
     
     var mainHeadline: String?

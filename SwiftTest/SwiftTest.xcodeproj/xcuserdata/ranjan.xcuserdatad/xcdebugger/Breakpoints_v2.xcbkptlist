@@ -9,13 +9,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "SwiftTest/DetailNewsViewController.swift"
-            timestampString = "553664633.2968791"
+            filePath = "SwiftTestTests/NysessionMockObject.swift"
+            timestampString = "556278985.306316"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "81"
-            endingLineNumber = "81"
-            landmarkName = "tableView(_:numberOfRowsInSection:)"
+            startingLineNumber = "42"
+            endingLineNumber = "42"
+            landmarkName = "testResultsAndParsesData()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -25,13 +25,93 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "SwiftTest/DetailNewsViewController.swift"
-            timestampString = "553664633.297116"
+            filePath = "SwiftTestTests/NysessionMockObject.swift"
+            timestampString = "556278985.452262"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "28"
-            endingLineNumber = "28"
-            landmarkName = "viewDidLoad()"
+            startingLineNumber = "54"
+            endingLineNumber = "54"
+            landmarkName = "testResultsAndParsesData()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SwiftTestTests/NysessionMockObject.swift"
+            timestampString = "556278985.4533449"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "41"
+            endingLineNumber = "41"
+            landmarkName = "testResultsAndParsesData()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SwiftTestTests.NysessionMockObject.testResultsAndParsesData() -&gt; ()"
+                  moduleName = "SwiftTestTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ranjan/Desktop/GitFirst/NYTimes/SwiftTest/SwiftTestTests/NysessionMockObject.swift"
+                  timestampString = "556279153.7793421"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "41"
+                  endingLineNumber = "41"
+                  offsetFromSymbolStart = "253">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__ObjC.URLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in SwiftTestTests.NysessionMockObject.testResultsAndParsesData() -&gt; ()"
+                  moduleName = "SwiftTestTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ranjan/Desktop/GitFirst/NYTimes/SwiftTest/SwiftTestTests/NysessionMockObject.swift"
+                  timestampString = "556279153.782099"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "41"
+                  endingLineNumber = "41"
+                  offsetFromSymbolStart = "45">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SwiftTestTests/NysessionMockObject.swift"
+            timestampString = "556278985.45418"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "44"
+            endingLineNumber = "44"
+            landmarkName = "testResultsAndParsesData()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SwiftTestTests/NysessionMockObject.swift"
+            timestampString = "556279186.153353"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "40"
+            endingLineNumber = "40"
+            landmarkName = "testResultsAndParsesData()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

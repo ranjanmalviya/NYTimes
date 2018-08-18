@@ -11,12 +11,16 @@ import XCTest
 
 class SwiftTestTests: XCTestCase {
     
+    var sessionUnderTest: URLSession!
     override func setUp() {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
+        
+        sessionUnderTest = URLSession(configuration: URLSessionConfiguration.default)
+        
     }
     
-    func test_title_in_news() {
+    func testTitleINews() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let viewC = storyboard.instantiateInitialViewController() as! ViewController
         viewC.newsCollection.append(NewsModal.init(mainHeadline: "1", subHeadline: "2", author: "3", date: "4"))
@@ -27,8 +31,38 @@ class SwiftTestTests: XCTestCase {
         XCTAssertEqual("4", newsX?.date)
     }
     
+    
+    
+    // Asynchronous test: success fast, failure slow
+    func testValidCallToNyTimesGetsHTTPStatusCode200() {
+        // given
+        let url = URL(string:"http://api.nytimes.com/svc/mostpopular/v2/mostviewed/all-sections/7.json?api-key=")
+        // 1
+        let promise = expectation(description: "Status code: 200")
+        
+        // when
+        let dataTask = sessionUnderTest.dataTask(with: url!) { data, response, error in
+            // then
+            if let error = error {
+                XCTFail("Error: \(error.localizedDescription)")
+                return
+            } else if let statusCode = (response as? HTTPURLResponse)?.statusCode {
+                if statusCode == 200 {
+                    // 2
+                    promise.fulfill()
+                } else {
+                    XCTFail("Status code: \(statusCode)")
+                }
+            }
+        }
+        dataTask.resume()
+        // 3
+        waitForExpectations(timeout: 150, handler: nil)
+    }
+    
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
+        sessionUnderTest = nil
         super.tearDown()
     }
     
