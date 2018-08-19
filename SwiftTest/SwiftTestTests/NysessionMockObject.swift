@@ -37,7 +37,7 @@ class NysessionMockObject: XCTestCase {
         let promise = expectation(description: "Status code: 200")
         
         
-        let url = URL(string: "http://api.nytimes.com/svc/mostpopular/v2/mostviewed/all-sections/7.json?api-key=")
+        let url = URL(string: "http://api.nytimes.com/svc/mostpopular/v2/mostviewed/all-sections/7.json?api-key=d84bea1f0a9d42378053ccd767456b83")
         let dataTask = controllerUnderTest?.defaultSession.dataTask(with: url!) {
             data, response, error in
             // if HTTP request is successful, call updateSearchResults(_:) which parses the response data into Tracks
@@ -51,7 +51,7 @@ class NysessionMockObject: XCTestCase {
             }
         }
         dataTask?.resume()
-        waitForExpectations(timeout: 5, handler: nil)
+        waitForExpectations(timeout: 50, handler: nil)
         
     }
 
